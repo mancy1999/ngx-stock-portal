@@ -16,7 +16,7 @@ export class AppComponent {
   url_prefix = 'http://stock360.hkej.com/quotePlus/';
 
   constructor(private httpClient: HttpClient) {
- 
+
   }
 
   openUrl(stock) {
