@@ -1,0 +1,32 @@
+<!-- <div echarts [options]='chartOption' class="demo-chart"></div>
+ -->
+
+
+<!-- <div #chart style="width: 600px;height:400px;"></div> -->
+
+<app-header>
+
+</app-header>
+
+<div nz-row [nzGutter]="8">
+  <div nz-col [nzSpan]="6">
+    <app-stock-list>
+
+    </app-stock-list>
+  </div>
+  <div nz-col [nzSpan]="18">
+    <nz-card [nzBordered]="false" [nzNoHovering]="true">
+      <ng-template #title>股票資料</ng-template>
+      <ng-template #body>
+        <iframe width="100%" height="300" [src]="aastockUrl | safe"></iframe>
+        <!-- <div nz-row [nzType]="'flex'" [nzJustify]="'start'" [nzAlign]="'top'">
+          <strong>日子: </strong>
+          <nz-checkable-tag *ngFor="let day of days_dataSource" [nzChecked]="days.indexOf(day.name) > -1" [nzColor]="day.color" (nzChange)="handleChange($event, day.name)">
+            {{day.name}}
+          </nz-checkable-tag>
+        </div> -->
+        <!-- <div #chart style="height:600px;" echarts [options]='chartOption3D' (chartInit)="onChartInit($event)"></div> -->
+      </ng-template>
+    </nz-card>
+  </div>
+</div>
