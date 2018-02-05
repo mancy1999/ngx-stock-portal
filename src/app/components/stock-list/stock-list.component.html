@@ -1,0 +1,59 @@
+<nz-card [nzBordered]="true" [nzNoHovering]="false" nzNoPadding>
+  <ng-template #title>股票列表</ng-template>
+  <ng-template #extra>
+    <button nz-button (click)="showSymbol()" [nzSize]="'small'" [nzType]="'default'">
+      <i class="anticon anticon-plus"></i>
+    </button>
+    <nz-dropdown>
+      <button nz-button nz-dropdown [nzSize]="'small'">
+        <span>排序</span>
+        <i class="anticon anticon-bars">
+        </i>
+      </button>
+      <ul nz-menu>
+        <li nz-menu-item>
+          <a click="sortBy('PctChange')">變動(%)</a>
+        </li>
+        <li nz-menu-item>
+          <a click="sortBy('Change')">變動</a>
+        </li>
+        <li nz-menu-item>
+          <a click="sortBy('Volume')">成交量</a>
+        </li>
+        <li nz-menu-item>
+          <a click="sortBy('TurnOver')">成交額</a>
+        </li>
+      </ul>
+    </nz-dropdown>
+  </ng-template>
+  <ng-template #body>
+    <div nz-row *ngIf="showAddSymbolWidget;else stockListTemplate" [nzGutter]="8">
+      <div nz-col [nzSpan]="12">
+        <nz-input [(ngModel)]="newAddSymbol" name="newAddSymbol" [nzPlaceHolder]="'eg 700.HK'"></nz-input>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <button nz-button (click)="addSymbol()" [nzType]="'primary'">
+          新增
+        </button>
+        <button nz-button (click)="cancelSymbol()" [nzType]="'default'">
+          取消
+        </button>
+      </div>
+    </div>
+
+    <ng-template #stockListTemplate>
+      <ng-container *ngIf="stockList.length <= 0; then noDataTemplate; else listTemplate">
+
+      </ng-container>
+      <ng-template #noDataTemplate>
+        <h3 class="text-center">請新增股票</h3>
+      </ng-template>
+      <ng-template #listTemplate>
+        <div nz-row [nzGutter]="8" *ngFor="let stock of stockList; let i=index">
+          <app-stock-list-item [stock]="stock" (notify)="notifyFromChild($event)">
+          </app-stock-list-item>
+        </div>
+      </ng-template>
+    </ng-template>
+  </ng-template>
+</nz-card>
