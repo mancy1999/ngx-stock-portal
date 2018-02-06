@@ -7,7 +7,7 @@ import { IStockList } from '../stock-list.component';
 })
 
 export class StockListItemComponent implements OnInit {
-  @Input() stock: IStockList;
+  @Input() stock: any;
   @Output() notify: EventEmitter<any> = new EventEmitter();
   ngOnInit() { }
 

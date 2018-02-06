@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class StockListComponent implements OnInit {
   // symbolList: string[] = ['700', '2318', '2628', '1199', '811', '586', '763', '981', '87'];
-  url_prex = 'http://stock-api-hk.herokuapp.com/stock/';
+  url_prex = 'https://stock-api-hk.herokuapp.com/stock/';
   stock = {
     list: ['700', '2318', '2628', '1199', '811', '586', '763', '981', '87'],
     dataSource: [],
