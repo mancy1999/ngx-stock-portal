@@ -12,8 +12,8 @@ export class AppComponent {
 
   herokuUrl = '';
 
-  url = 'http://stock360.hkej.com/quotePlus/1';
-  url_prefix = 'http://stock360.hkej.com/quotePlus/';
+  url = 'https://stock360.hkej.com/quotePlus/1';
+  url_prefix = 'https://stock360.hkej.com/quotePlus/';
 
   constructor(private httpClient: HttpClient) {
 
