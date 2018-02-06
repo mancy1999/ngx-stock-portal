@@ -1,10 +1,7 @@
 <ul nz-menu [nzMode]="'horizontal'">
-  <li nz-menu-item>
-    <a routerLink="/quote">
-      <i class="anticon anticon-mail"></i>即時報價
+  <li nz-menu-item *ngFor="let m of menu">
+    <a [routerLink]="m.link">
+      <i [class]="m.icon"></i>{{m.text}}
     </a>
-  </li>
-  <li nz-menu-item nzDisabled>
-    <i class="anticon anticon-appstore"></i>排行榜
   </li>
 </ul>

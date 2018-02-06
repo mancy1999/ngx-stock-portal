@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NgxEchartsService } from 'ngx-echarts';
 import { HttpClient } from '@angular/common/http';
+import { NzNotificationService } from 'ng-zorro-antd';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +11,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   // url = 'http://www.aastocks.com/tc/stocks/quote/dynamic-chart.aspx?symbol=00001';
-
   herokuUrl = '';
-
-  url = 'https://stock360.hkej.com/quotePlus/1';
-  url_prefix = 'https://stock360.hkej.com/quotePlus/';
-
-  constructor(private httpClient: HttpClient) {
-
-  }
-
-  openUrl(stock) {
-    this.url = `${this.url_prefix}${this.pad(stock.Symbol, 4)}`;
-    console.log(this.url);
+  constructor(private httpClient: HttpClient,
+    private storeServ: LocalStorageService,
+    private ntf: NzNotificationService) {
   }
 
   pad(num: number, size: number): string {
@@ -31,6 +24,4 @@ export class AppComponent {
     }
     return s;
   }
-
-
 }

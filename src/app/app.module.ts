@@ -12,17 +12,50 @@ import { StockListItemComponent } from './components/stock-list/stock-list-item/
 import { TrendComponent } from './components/trend/trend.component';
 import { NumberPipe } from './pipe/number.pipe';
 import { SafePipe } from './pipe/iframe.pipe';
+import { AngularWebStorageModule } from 'angular-web-storage';
+import { RouterModule, Routes } from '@angular/router';
+import { ProfolioComponent } from './components/profolio/profolio.component';
+import { HkejComponent } from './components/hkej/hkej.component';
+import { PortfolioComponent, GridCellDataPipe } from './components/portfolio/portfolio.component';
+import { BackTestComponent } from './components/backTest/backTest.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { DevExtremeModule } from 'devextreme-angular';
+
+const Components = [
+  StockListComponent,
+  StockListItemComponent,
+  // ProfolioComponent,
+  PortfolioComponent,
+  HkejComponent,
+  BackTestComponent,
+  WelcomeComponent,
+];
+
+const Pipes = [
+  SafePipe,
+  GridCellDataPipe,
+];
+
+const routes: Routes = [
+  { path: 'welcome', component: WelcomeComponent },
+  { path: 'hkej/:id', component: HkejComponent },
+  { path: 'portfolio', component: PortfolioComponent },
+  { path: 'backTest', component: BackTestComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'welcome' }
+];
+
+
+
+export const appRouting = RouterModule.forRoot(routes);
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    StockListComponent,
-    StockListItemComponent,
     TrendComponent,
+    Components,
     NumberPipe,
-    SafePipe,
-
+    Pipes,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +64,9 @@ import { SafePipe } from './pipe/iframe.pipe';
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot(),
     NgxEchartsModule,
+    AngularWebStorageModule,
+    appRouting,
+    DevExtremeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

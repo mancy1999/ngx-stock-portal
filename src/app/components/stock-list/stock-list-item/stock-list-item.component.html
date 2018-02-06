@@ -5,10 +5,13 @@
     </strong>
   </ng-template>
   <ng-template #extra>
-    {{stock.LastUpdate | date:'yyyy-MM-dd h:mm a'}}
-    <!-- {{stock.LastUpdate | date:'h:mm a'}} -->
-    <button nz-button (click)="openUrl()" [nzSize]="'small'" [nzType]="'default'">
+    <!-- {{stock.LastUpdate | date:'yyyy-MM-dd h:mm a'}} -->
+    {{stock.LastUpdate | date:'h:mm a'}}
+    <button nz-button (click)="openUrl()" [nzSize]="'small'">
       <i class="anticon anticon-export"></i>
+    </button>
+    <button nz-button (click)="delete()" [nzSize]="'small'">
+      <i class="anticon anticon-delete"></i>
     </button>
   </ng-template>
 
