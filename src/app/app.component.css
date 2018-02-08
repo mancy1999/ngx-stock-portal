@@ -1,3 +1,16 @@
-.demo-chart {
-  height: 400px;
+/* :host ::ng-deep .ant-layout-content {
+  min-height: 80vh;
 }
+
+:host ::ng-deep .ant-layout-header, :host ::ng-deep .ant-layout-footer {
+  height: 10vh;
+}
+
+:host ::ng-deep .ant-layout-footer {
+  height: 10vh;
+}
+
+:host > .ant-layout {
+  text-align: center;
+}
+ */

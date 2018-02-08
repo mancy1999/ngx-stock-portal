@@ -8,21 +8,57 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './layout/header/header.component';
 import { StockListComponent } from './components/stock-list/stock-list.component';
-import { StockListItemComponent } from './components/stock-list/stock-list-item/stock-list-item.component';
 import { TrendComponent } from './components/trend/trend.component';
 import { NumberPipe } from './pipe/number.pipe';
 import { SafePipe } from './pipe/iframe.pipe';
+import { AngularWebStorageModule } from 'angular-web-storage';
+import { RouterModule, Routes } from '@angular/router';
+import { ProfolioComponent } from './components/profolio/profolio.component';
+import { HkejComponent } from './components/hkej/hkej.component';
+import { PortfolioComponent, GridCellDataPipe } from './components/portfolio/portfolio.component';
+import { BackTestComponent } from './components/backTest/backTest.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { DevExtremeModule } from 'devextreme-angular';
+import { RealtimeQuoteComponent } from './route/realtime-quote/realtime-quote.component';
+import { StockListItemComponent } from './components/stock-list-item/stock-list-item.component';
+
+const Components = [
+  StockListComponent,
+  StockListItemComponent,
+  // ProfolioComponent,
+  PortfolioComponent,
+  HkejComponent,
+  BackTestComponent,
+  WelcomeComponent,
+  RealtimeQuoteComponent,
+];
+
+const Pipes = [
+  SafePipe,
+  GridCellDataPipe,
+];
+
+const routes: Routes = [
+  { path: 'welcome', component: WelcomeComponent },
+  { path: 'quote', component: RealtimeQuoteComponent },
+  { path: 'hkej/:id', component: HkejComponent },
+  { path: 'portfolio', component: PortfolioComponent },
+  { path: 'backTest', component: BackTestComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'welcome' }
+];
+
+
+
+export const appRouting = RouterModule.forRoot(routes);
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    StockListComponent,
-    StockListItemComponent,
     TrendComponent,
+    Components,
     NumberPipe,
-    SafePipe,
-
+    Pipes,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +67,9 @@ import { SafePipe } from './pipe/iframe.pipe';
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot(),
     NgxEchartsModule,
+    AngularWebStorageModule,
+    appRouting,
+    DevExtremeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

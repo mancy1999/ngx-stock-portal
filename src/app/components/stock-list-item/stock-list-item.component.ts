@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IStockList } from '../stock-list.component';
 
 @Component({
   selector: 'app-stock-list-item',
@@ -7,11 +6,16 @@ import { IStockList } from '../stock-list.component';
 })
 
 export class StockListItemComponent implements OnInit {
-  @Input() stock: IStockList;
+  @Input() stock: any;
   @Output() notify: EventEmitter<any> = new EventEmitter();
+  @Output() removeNotify: EventEmitter<any> = new EventEmitter();
   ngOnInit() { }
 
   openUrl() {
     this.notify.emit(this.stock);
+  }
+
+  delete() {
+    this.removeNotify.emit(this.stock);
   }
 }

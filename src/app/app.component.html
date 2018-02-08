@@ -4,21 +4,12 @@
 
 <!-- <div #chart style="width: 600px;height:400px;"></div> -->
 
-<app-header>
+<!-- <app-stock-list (notify)="openUrl($event)">
+    </app-stock-list> -->
 
-</app-header>
+
+<app-header></app-header>
 
 <div nz-row [nzGutter]="8">
-  <div nz-col [nzSpan]="6">
-    <app-stock-list (notify)="openUrl($event)">
-    </app-stock-list>
-  </div>
-  <div nz-col [nzSpan]="18">
-    <nz-card [nzBordered]="false" [nzNoHovering]="true">
-      <ng-template #title>股票資料</ng-template>
-      <ng-template #body>
-        <iframe width="100%" style="height:100vh" [src]="url | safe"></iframe>
-      </ng-template>
-    </nz-card>
-  </div>
+  <router-outlet></router-outlet>
 </div>

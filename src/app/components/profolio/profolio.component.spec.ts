@@ -1,22 +1,22 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { StockListComponent } from './stock-list.component';
+import { ProfolioComponent } from './profolio.component';
 
-describe('a stock-list component', () => {
-	let component: StockListComponent;
+describe('a profolio component', () => {
+	let component: ProfolioComponent;
 
 	// register all needed dependencies
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				StockListComponent
+				ProfolioComponent
 			]
 		});
 	});
 
 	// instantiation through framework injection
-	beforeEach(inject([StockListComponent], (StockListComponent) => {
-		component = StockListComponent;
+	beforeEach(inject([ProfolioComponent], (ProfolioComponent) => {
+		component = ProfolioComponent;
 	}));
 
 	it('should have an instance', () => {

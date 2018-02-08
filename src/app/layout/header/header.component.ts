@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { headerMenu } from '../../../assets/menu';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
-
+  menu = headerMenu;
   constructor() {
 
   }

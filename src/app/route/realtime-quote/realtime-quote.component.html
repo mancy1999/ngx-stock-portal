@@ -1,0 +1,75 @@
+<nz-card [nzBordered]="true" [nzNoHovering]="false" nzNoPadding>
+  <ng-template #title>股票列表</ng-template>
+  <ng-template #extra>
+    <nz-select style="width:80px" [(ngModel)]="sortType" (ngModelChange)="sortTypeChanged($event)" [nzAllowClear]="false">
+      <nz-option nzLabel="變動(%)" nzValue="PctChange">
+      </nz-option>
+      <nz-option nzLabel="變動" nzValue="Change">
+      </nz-option>
+      <nz-option nzLabel="成交量" nzValue="Volume">
+      </nz-option>
+      <nz-option nzLabel="成交額" nzValue="TurnOver">
+      </nz-option>
+    </nz-select>
+    <button nz-button (click)="showSymbol()" [nzType]="'default'">
+      <i class="anticon anticon-plus"></i>
+    </button>
+    <button nz-button (click)="changeView()" [nzType]="'default'">
+      <i class="anticon anticon-appstore-o"></i>
+    </button>
+  </ng-template>
+  <ng-template #body>
+    <div *ngIf="showAddSymbolWidget" nz-row [nzType]="'flex'" [nzJustify]="'end'">
+      <div nz-col>
+        <nz-input [(ngModel)]="newAddSymbol" name="newAddSymbol" [nzPlaceHolder]="'eg 700'"></nz-input>
+      </div>
+      <div nz-col>
+        <button nz-button (click)="addSymbol()" [nzType]="'primary'">
+          新增
+        </button>
+        <button nz-button (click)="cancelSymbol()" [nzType]="'default'">
+          取消
+        </button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="view" nz-row [nzGutter]="8">
+      <ng-container *ngIf="stock.list.length <= 0; then noDataTemplate; else listTemplate">
+      </ng-container>
+    </div>
+    <div *ngIf="!view" nz-row [nzGutter]="8">
+      <dx-data-grid id="gridContainer" [dataSource]="stock.displayDataSource" [showRowLines]="true" [showBorders]="true">
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxi-column dataField="Symbol" caption="股票號碼"></dxi-column>
+        <dxi-column dataField="Desp" caption="股票名稱"></dxi-column>
+        <dxi-column dataField="PrevClose" caption="前收市價"></dxi-column>
+        <dxi-column dataField="Open" caption="開市價"></dxi-column>
+        <dxi-column dataField="High" caption="最高價"></dxi-column>
+        <dxi-column dataField="Low" caption="最低價"></dxi-column>
+        <dxi-column dataField="Last" caption="現價" cellTemplate="diffCellTemplate"></dxi-column>
+        <dxi-column dataField="Change" caption="變動"></dxi-column>
+        <dxi-column dataField="PctChange" caption="變動(%)"></dxi-column>
+        <dxi-column dataField="Volume" caption="成交量"></dxi-column>
+        <dxi-column dataField="PERatio" caption="PE比率"></dxi-column>
+        <dxi-column dataField="EPS" caption="每股盈餘"></dxi-column>
+        <dxi-column dataField="Dividend" caption="股息"></dxi-column>
+        <dxi-column dataField="DividendPayout" caption="股息派息比率"></dxi-column>
+        <dxi-column dataField="Yield" caption="收益率"></dxi-column>
+        <dxi-column dataField="LastUpdate" caption="最後更新時間"></dxi-column>
+        <div *dxTemplate="let d of 'diffCellTemplate'" [class]=" (d.data.Last - d.data.PrevClose >= 0) ? 'inc' : 'dec'">
+          <span class="current-value">{{d.data.Last | currency:'HKD':true}}</span>
+          <span class="diff">{{d.data.Last - d.data.PrevClose | number:'1.2-2'}}</span>
+        </div>
+      </dx-data-grid>
+    </div>
+  </ng-template>
+</nz-card>
+
+
+<ng-template #noDataTemplate>
+  <h3 class="text-center">請新增股票</h3>
+</ng-template>
+
+<ng-template #listTemplate>
+  <app-stock-list [(dataSource)]="stock.displayDataSource" (delete)="delete($event)" (notify)="notifyFromChild($event)"></app-stock-list>
+</ng-template>
