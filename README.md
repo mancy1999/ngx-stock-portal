@@ -38,9 +38,6 @@ At this point your code will be up on GitHub, but your hosted app will not be up
 npm install -g gh-pages
 This command creates a global gh-pages command you can you use to publish your application to GitHub Pages. Before running `gh-pages`, you’ll first need to build a production-ready version of your application. To do that run the following Angular CLI command.
 
-ng build --prod --base-href /PROJECT_NAME/
-This command will take a while to complete, as it’s performing all the optimizations needed to get your app ready for production usage. When the command finishes, you’ll have a new dist folder that contains the production-ready version of your app.
-
-To get that version of your app live on GitHub Pages, go ahead and run the following command.
+ng build --prod --base-href /ngx-stock-portal/
 
 gh-pages -d dist
