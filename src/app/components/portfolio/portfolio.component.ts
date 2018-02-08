@@ -6,7 +6,7 @@ import { Component, OnInit, PipeTransform, Pipe } from '@angular/core';
 })
 
 export class PortfolioComponent implements OnInit {
-
+  dataSource;
   ngOnInit() {
 
   }

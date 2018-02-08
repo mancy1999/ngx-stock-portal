@@ -13,7 +13,6 @@ import { NumberPipe } from './pipe/number.pipe';
 import { SafePipe } from './pipe/iframe.pipe';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfolioComponent } from './components/profolio/profolio.component';
 import { HkejComponent } from './components/hkej/hkej.component';
 import { PortfolioComponent, GridCellDataPipe } from './components/portfolio/portfolio.component';
 import { BackTestComponent } from './components/backTest/backTest.component';
