@@ -36,7 +36,6 @@ git push origin master
 At this point your code will be up on GitHub, but your hosted app will not be up on GitHub Pages yet. Luckily there are a few npm packages that can help you get there. My favorite is gh-pages, and you can install it using the following command.
 
 npm install -g gh-pages
-This command creates a global gh-pages command you can you use to publish your application to GitHub Pages. Before running `gh-pages`, you’ll first need to build a production-ready version of your application. To do that run the following Angular CLI command.
 
 ng build --prod --base-href /ngx-stock-portal/
 

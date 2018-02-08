@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'hkej/:id', component: HkejComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'backTest', component: BackTestComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'welcome' }
+  { path: '**', pathMatch: 'full', redirectTo: 'quote' }
 ];
 
 
