@@ -43,6 +43,7 @@ export const headerMenu = [
   new Menu('即時報價', '即時報價', 'quote', 'anticon anticon-mail'),
   new Menu('排行榜', '排行榜', 'rank', 'anticon anticon-appstore'),
   new Menu('投資組合', '投資組合', 'portfolio', 'anticon anticon-mail'),
-  new Menu('回測', '回測', 'hkej', 'anticon anticon-mail'),
+  new Menu('回測', '回測', 'backtest', 'anticon anticon-code-o'),
+  new Menu('提示功能', '提示功能', 'alert', 'anticon anticon-notification'),
 ];
 
